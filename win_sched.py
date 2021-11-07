@@ -29,8 +29,8 @@ def span_battery():
     taxacarga = restacargaBateria()
     situacao = situacaoBateria()
 
-    # A partir de 30% Battery, e AC off: gera toast
-    if taxacarga < 50 and not situacao:
+    # A partir de 25% Battery, e AC off: gera toast
+    if taxacarga < 25 and not situacao:
         notaBaixaBateria(taxacarga=taxacarga, tempo=tempo)
 
     print('Restante:', tempo, '. Carga:', taxacarga, 'AC conn:', situacao)

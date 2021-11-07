@@ -12,7 +12,7 @@ def modalTheacrine():
 
     title = 'Escolha o periodo de funcionamento do Theacrine:'
     layout = [[sg.Text(title)],  # Textbox caption
-            [sg.Combo(['4 min', '6 min', '8 min'], key='-COMBO-')],  # Periodos
+            [sg.Combo(['4 hrs', '6 hrs', '8 hrs'], key='-COMBO-')],  # Periodos
             [sg.Text('', key='-TEXT1-')],  # Textbox de erro
             [sg.OK(), sg.Button('Sair')]  # Menu de opcoes
     ]
@@ -32,15 +32,15 @@ def modalTheacrine():
                 window['-TEXT1-'].update('Precisa escolher um valor !')
 
             else:
-                dict_options = {'4 min': 4, '6 min': 6, '8 min': 8}
+                dict_options = {'4 hrs': 4, '6 hrs': 6, '8 hrs': 8}
                 selected = dict_options[values['-COMBO-']]
                 # print(selected)
                 window['-TEXT1-'].update('Selecionado... ' + str(selected))
                 time.sleep(3)
-                loops = divmod(selected * 1, 1)
+                loops = divmod(selected * 60, 5)  # Nr of loops x 1HR
 
                 window.minimize()
 
                 # Start loops of checks
-                time_check(mins=1, loops=loops[0])
+                time_check(mins=5, loops=loops[0])  # Notifier a cada 5min
                 window.Normal()

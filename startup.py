@@ -1,5 +1,4 @@
 import win_ide
-# from utils.win_toaster import notaBaixaBateria
 
 
 """
