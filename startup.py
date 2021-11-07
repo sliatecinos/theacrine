@@ -1,10 +1,10 @@
-from utils.win_toaster import notaBaixaBateria
-from utils.win_psutil import *
+import win_ide
+# from utils.win_toaster import notaBaixaBateria
 
 
-tempo = restatempo_Bateria()
-carga = restacarga_Bateria()
-situacao = situacao_Bateria()
+"""
+Main Script to start Theacrine App
+"""
 
-if not situacao:
-    notaBaixaBateria(porcentagem=carga, tempo=tempo)
+win_ide.modalTheacrine()
+

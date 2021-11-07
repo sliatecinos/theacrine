@@ -2,18 +2,20 @@ from win10toast import ToastNotifier
 import time
 
 
-def notaBaixaBateria(porcentagem=5, tempo='0:05:00'):
-    msg = f"Bateria esgotando em: {tempo}.\nRestam apenas {porcentagem}%."
+def notaBaixaBateria(taxacarga=5, tempo='0:05:00'):
+    msg = f"Bateria esgotando em: {tempo}.\nRestam apenas {taxacarga}%."
     normal = True
+    duration = 15
 
-    if porcentagem < 10:
+    if taxacarga < 10:
         normal = False
+        duration = 20
 
     toaster = ToastNotifier()
     toaster.show_toast("Theacrine aviso",
                        msg=msg,
                        icon_path="thea-leaf-32.ico",
-                       duration=15,
+                       duration=duration,
                        threaded=normal)
 
     # toaster.show_toast("Example two",
