@@ -1,6 +1,7 @@
-/.idea/modules.xml
-/.idea/misc.xml
-/.idea/inspectionProfiles/profiles_settings.xml
-/.idea/vcs.xml
-/.idea/theacrine.iml
-/.idea/workspace.xml
+/.idea/
+/build/
+/dist/
+/theacrine.spec
+/startup.spec
+/theacrine.spec-copy
+/utils/win_ctypes.py

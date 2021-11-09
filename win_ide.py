@@ -1,6 +1,14 @@
 from win_sched import time_check
 import PySimpleGUI as sg
 import time
+import os
+import sys
+
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 
 def modalTheacrine():
@@ -17,7 +25,7 @@ def modalTheacrine():
             [sg.OK(), sg.Button('Sair')]  # Menu de opcoes
     ]
 
-    window = sg.Window('Theacrine main panel', layout, icon='thea-leaf-32.ico')
+    window = sg.Window('Theacrine main panel', layout, icon=resource_path('default_16.ico'))
 
     while True:
         event, values = window.read()
@@ -27,20 +35,26 @@ def modalTheacrine():
             break
             exit(0)
 
+        dict_options = {'4 hrs': 4, '6 hrs': 6, '8 hrs': 8}
         if event == 'OK':
-            if values['-COMBO-'] == '':
-                window['-TEXT1-'].update('Precisa escolher um valor !')
+            if values['-COMBO-'] not in dict_options:
+                window['-TEXT1-'].update('Escolha um valor disponível !')
 
             else:
-                dict_options = {'4 hrs': 4, '6 hrs': 6, '8 hrs': 8}
                 selected = dict_options[values['-COMBO-']]
-                # print(selected)
-                window['-TEXT1-'].update('Selecionado... ' + str(selected))
-                time.sleep(3)
-                loops = divmod(selected * 60, 5)  # Nr of loops x 1HR
+                ix = list(dict_options.keys())[list(dict_options.values()).index(selected)]
+                msg = 'Você selecionou: (%s)\nCorreto ?' % ix
 
-                window.minimize()
+                # Cria Popup de confirmacao da option escolhida
+                button = sg.popup_yes_no(msg)
 
-                # Start loops of checks
-                time_check(mins=5, loops=loops[0])  # Notifier a cada 5min
-                window.Normal()
+                if button == 'Yes':
+                    window['-TEXT1-'].update('Selecionado... ' + str(selected))
+                    time.sleep(3)
+                    loops = divmod(selected * 60, 5)  # Nr of loops x 1HR
+
+                    window.minimize()
+
+                    # Start loops of checks
+                    time_check(mins=5, loops=loops[0])  # Notifier a cada 5min
+                    window.Normal()
