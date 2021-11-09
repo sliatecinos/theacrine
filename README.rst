@@ -64,7 +64,7 @@ Optional
   por exemplo, |pyinstaller| ou |auto-py-to-exe|.
 
 
-.. |Theacrine| image:: default-32.ico
+.. |Theacrine| image:: default_32.ico
    :target: https://github.com/sliatecinos/theacrine
    :alt: Theacrine - GitHub
 
