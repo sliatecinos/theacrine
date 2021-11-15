@@ -4,7 +4,7 @@
 Theacrine |Theacrine|
 =========
 | Theacrine é a ferramenta para ajudar a evitar que você esqueça de ligar seu PC na tomada,
-  e a bateria se esgote - perdendo todo o trabalho feito... :computer: :battery: :no_entry: :worried:
+  e a bateria se esgote - perdendo todo o trabalho feito... :worried:
 
 Installation
 ============
