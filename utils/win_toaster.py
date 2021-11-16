@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from win10toast import ToastNotifier
 import time
 import os
@@ -11,7 +12,7 @@ def resource_path(relative_path):
 
 
 def notaBaixaBateria(taxacarga=5, tempo='0:05:00'):
-    msg = f"Bateria esgotando em: {tempo}.\nRestam apenas {taxacarga}%."
+    msg = f"Theacrine avisa\nBateria esgotando em: {tempo}.\nResta(m) apenas {taxacarga}%."
     normal = True
     duration = 15
 
@@ -20,9 +21,9 @@ def notaBaixaBateria(taxacarga=5, tempo='0:05:00'):
         duration = 20
 
     toaster = ToastNotifier()
-    toaster.show_toast("Theacrine aviso",
+    toaster.show_toast("**Sua energia esta baixa**",
                        msg=msg,
-                       icon_path=resource_path("default_32.ico"),
+                       icon_path=resource_path("../icons/default_32.ico"),
                        duration=duration,
                        threaded=normal)
 
