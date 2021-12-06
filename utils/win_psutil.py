@@ -20,21 +20,21 @@ def saidaBateria(a='default', b='Default'):
     print('Saida', a, 'da package.:', b)
 
 
-def restatempoBateria(a='tempo'):
+def restatempoBateria(a='situacaotempo'):
     battery = psutil.sensors_battery()
     b = secs2hours(battery.secsleft)
     saidaBateria(a, b)
     return b
 
 
-def restacargaBateria(a='carga'):
+def restacargaBateria(a='situacaocarga'):
     battery = psutil.sensors_battery()
     b = battery.percent
     saidaBateria(a, b)
     return b
 
 
-def situacaoBateria(a='situacao'):
+def situacaoBateria(a='situacaoac'):
     battery = psutil.sensors_battery()
     b = battery.power_plugged
     saidaBateria(a, b)

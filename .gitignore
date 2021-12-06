@@ -4,3 +4,9 @@
 /theacrine.spec*
 /startup.spec
 /theacrine.pyw
+/requirements-clean.txt
+/__pycache__
+/utils/__pycache__/
+.vscode/settings.json
+.vscode/launch.json
+

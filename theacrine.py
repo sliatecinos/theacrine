@@ -1,11 +1,7 @@
-from utils.win_ide import Theacrine
-from utils.win_error import TheacrineError
-
-
-"""
-Main Script to start Theacrine App
-@Version: 1.2
-"""
+# -*- coding: utf-8 -*-
+import utils
+import sys
+import traceback
 
 
 def main():
@@ -14,19 +10,23 @@ def main():
     @param :
     @return:
     """
-    try:
-        # Calls the Theacrine constructor
-        theacrine = Theacrine
 
-        raise Exception('Erro crítico')
+    # instances Theacrine app
+    theacrine = utils.Theacrine()
+    try:
         # Create Theacrine main panel
         theacrine.modal_theacrine()
+        # Error test
+        # raise TypeError('Erro crítico')
 
-    except Exception as e:
-        theacrine = TheacrineError
-        theacrine.modal_theacrine_error()
+    except Exception as err:
+        _, _, tb = sys.exc_info()
+        tb = traceback.extract_tb(tb)
+        msg_error = str(tb)
+        
+        theacrine.modal_theacrine_error(msg_error)
 
-    return
+    pass
 
 
 if __name__ == '__main__':

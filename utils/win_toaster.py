@@ -11,22 +11,24 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-def notaBaixaBateria(taxacarga=5, tempo='0:05:00'):
-    msg = f"Theacrine avisa\nBateria esgotando em: {tempo}.\nResta(m) apenas {taxacarga}%."
-    normal = True
-    duration = 15
+def notaBaixaBateria(taxacarga=5, tempo='0:05:00', ac_on=False):
+    """    F-String do toaster para esgotamento da bateria:    """
+    if ac_on == False:   # valida se pc nao sendo carregado
+        msg = f"Theacrine avisa\nBateria esgotando em: {tempo}.\nResta(m) apenas {taxacarga}%."
+        normal = True
+        duration = 15
 
-    if taxacarga < 10:
-        normal = False
-        duration = 20
+        if taxacarga < 20:
+            normal = False
+            duration = 20
 
-    toaster = ToastNotifier()
-    toaster.show_toast("**Sua energia esta baixa**",
-                       msg=msg,
-                       icon_path=resource_path("../icons/default_32.ico"),
-                       duration=duration,
-                       threaded=normal)
+        toaster = ToastNotifier()
+        toaster.show_toast("**Sua energia esta baixa**",
+                        msg=msg,
+                        icon_path=resource_path("../icons/default_32.ico"),
+                        duration=duration,
+                        threaded=normal)
 
-    # Wait for threaded notification to finish
-    while toaster.notification_active():
-        time.sleep(0.1)
+        # Wait for threaded notification to finish
+        while toaster.notification_active():
+            time.sleep(0.1)
